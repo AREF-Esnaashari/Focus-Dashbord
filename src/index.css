@@ -8,11 +8,12 @@ body {
     font-family: 'SF Mono', monospace;
     height: 100vh;
     overflow: hidden;
+    background-color: transparent;
 }
 
 .main {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(18px);
     background-image: url(../public/image/island_of_a_thousand_waterfalls_by_threedeee-d9ox6px.jpg);
@@ -27,7 +28,7 @@ body {
 .navbar {
     width: 95%;
     height: 70px;
-    margin: 15px auto;
+    margin: 0px auto;
     padding: 0 25px;
     display: flex;
     justify-content: space-between;
