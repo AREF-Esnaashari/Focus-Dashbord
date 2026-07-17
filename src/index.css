@@ -9,25 +9,45 @@ body {
     font-family: 'Blinker', sans-serif;
     height: 100vh;
     overflow-x: hidden;
+    background-color: #030712;
+}
+
+.loader {
+    --color-1: #fff;
+    --size: 1px;
+    width: calc(80 * var(--size));
+    height: calc(80 * var(--size));
+    border-radius: 50%;
+    display: inline-block;
+    border-top: calc(3 * var(--size)) solid var(--color-1);
+    border-right: calc(3 * var(--size)) solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .main {
     width: 100%;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(18px);
+    min-height: 100vh;
     background-image: url(../public/image/island_of_a_thousand_waterfalls_by_threedeee-d9ox6px.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-color: black;
+    background-attachment: fixed;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 40px;
 }
-
-
-/* Navbar */
 
 .navbar {
     height: 70px;
@@ -71,6 +91,7 @@ body {
     justify-content: center;
     padding: 10px;
     align-items: center;
+    flex-direction: column;
 }
 
 .Setup {
@@ -200,17 +221,12 @@ body {
 .WelcomeForm select {
     width: 90%;
     padding: 14px;
-    /* دقیقا هم‌اندازه با پدینگ اینپوت‌هایت */
     margin: 15px auto;
-    /* فاصله یکسان با بقیه المان‌ها */
     border: none;
     outline: none;
     border-radius: 12px;
-    /* گوشه‌های گرد دقیقا مثل دکمه و اینپوت‌ها */
-    /* استایل شیشه‌ای تیره هماهنگ با تم دارک */
     background: rgba(255, 255, 255, 0.08);
     color: #ffffff;
-    /* هماهنگی فونت */
     font-family: 'Blinker', sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -218,12 +234,8 @@ body {
     transition: all 0.3s ease;
 }
 
-
-/* تغییر رنگ پس‌زمینه گزینه‌ها موقع باز شدن منو برای خوانایی در تم دارک */
-
 .WelcomeForm select option {
     background-color: #0d1117;
-    /* هماهنگ با رنگ پس‌زمینه اصلی بدنه */
     color: #ffffff;
 }
 
@@ -241,9 +253,314 @@ body {
     gap: 10px;
 }
 
+.section1 {
+    width: 100%;
+    height: 600px;
+}
+
+.col-1-section1 {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.aboutWeather {
+    width: 50%;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    min-width: 250px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.iconList {
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+    transition: 0.3s ease;
+    padding: 6px;
+    cursor: pointer;
+    background-color: #0d1117;
+    border-radius: 50%;
+    user-select: none;
+    z-index: 1000;
+    top: 3;
+}
+
+.iconList:hover {
+    scale: 1.1;
+}
+
+.iconList:active {
+    scale: 0.95;
+}
+
+.night {
+    background: rgba(56, 56, 56, 0.911);
+}
+
+.weather-status {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 10px;
+}
+
+.temp-display {
+    font-size: 72px;
+    margin: 15px 0;
+    font-weight: 700;
+}
+
+.day-night-text {
+    font-size: 18px;
+    color: rgb(235, 235, 235);
+}
+
+.TodoCountainer {
+    width: 90%;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 8px;
+    background-color: #000000b4;
+    padding: 10px;
+    transition: 0.3s ease;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.details-title {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid #ffffff1a;
+    padding-bottom: 8px;
+    text-align: center;
+}
+
+.details-grid {
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.detail-item span {
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 4px;
+}
+
+.time-text {
+    font-family: monospace;
+}
+
+.inpTodo {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.inpTodo>input {
+    padding: 5px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    background-color: #d8d8d857;
+}
+
+.inpTodo>button {
+    padding: 5px 10px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    background-color: #ececec57;
+    color: white;
+}
+
+.listTodo {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-top: 1px solid rgba(219, 219, 219, 0.445);
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.listTodo>ul {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.listTodo>ul>li {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+    color: white;
+    border: 1px solid transparent;
+    transition: 0.3s ease;
+    border-radius: 8px;
+}
+
+.listTodo>ul>li:hover {
+    border: 1px solid gainsboro;
+    scale: 1.02;
+}
+
+.listTodo>ul>li>div {
+    display: flex;
+    gap: 10px;
+}
+
+.listTodo>ul>li>div>span {
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.listTodo>ul>li>div>span:hover {
+    scale: 1.09;
+}
+
+.infoCity {
+    width: 20%;
+    height: 400px;
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    -webkit-backdrop-filter: blur(18px);
+    padding: 10px;
+    font-weight: bold;
+}
+
+.infoCityNight {
+    background-color: #0d111770;
+}
+
+.is-day {
+    background-color: rgba(255, 255, 255, 0.301);
+    padding: 10px;
+    border-radius: 10px;
+}
+
 @media (width<=480px) {
     .Setup {
         width: 100%;
         height: 400px;
+    }
+}
+
+.col-2-section1 {
+    width: 100%;
+    margin-top: 50px;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0 0 24px 24px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.dashboard-logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    border-radius: 12px;
+    color: #ef4444;
+    font-family: 'Blinker', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dashboard-logout-btn:hover {
+    background: #ef4444;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.35);
+    transform: translateY(-1px);
+}
+
+.dashboard-logout-btn:active {
+    transform: translateY(0);
+}
+
+.dashboard-guideline {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+.dashboard-guideline strong {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dashboard-signature {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.signature-name {
+    font-weight: 700;
+    color: #ffffff;
+    position: relative;
+    padding-left: 2px;
+    background: linear-gradient(120deg, #ffffff, #a3a3a3, #ffffff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shineSignature 4s linear infinite;
+}
+
+@keyframes shineSignature {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-2-section1 {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 25px 15px;
+        border-radius: 0;
     }
 }

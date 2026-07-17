@@ -6,7 +6,7 @@ export function DateItem() {
 
   const formattedDate = `${month}/${day}`;
 
-  console.log(formattedDate);
+  // console.log(formattedDate);
 
   return (
     <div className="countainerDate">
