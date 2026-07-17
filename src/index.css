@@ -51,7 +51,8 @@ body {
 
 .navbar {
     height: 70px;
-    min-width: 80%;
+    width: 90%;
+    max-width: 1200px;
     margin: 10px auto;
     padding: 0 25px;
     display: flex;
@@ -86,7 +87,7 @@ body {
 
 .countainer {
     width: 100%;
-    height: 600px;
+    min-height: calc(100vh - 120px);
     display: flex;
     justify-content: center;
     padding: 10px;
@@ -96,12 +97,14 @@ body {
 
 .Setup {
     display: flex;
-    width: 450px;
+    width: 100%;
+    max-width: 450px;
     justify-content: space-evenly;
-    height: 450px;
+    min-height: 450px;
+    height: auto;
     align-items: center;
     flex-direction: column;
-    padding: 20px;
+    padding: 30px 20px;
     border-radius: 28px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(18px);
@@ -245,7 +248,8 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 200px;
+    height: auto;
+    min-height: 100px;
 }
 
 .formLogout>h1 {
@@ -255,31 +259,35 @@ body {
 
 .section1 {
     width: 100%;
-    height: 600px;
+    max-width: 1200px;
+    height: auto;
 }
 
 .col-1-section1 {
     width: 100%;
-    height: 500px;
+    height: auto;
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
 }
 
 .aboutWeather {
-    width: 50%;
-    height: 400px;
+    width: 48%;
+    min-height: 400px;
+    height: auto;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     padding: 20px;
-    min-width: 250px;
+    min-width: 280px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     color: #ffffff;
     position: relative;
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .iconList {
@@ -293,7 +301,7 @@ body {
     border-radius: 50%;
     user-select: none;
     z-index: 1000;
-    top: 3;
+    top: 3px;
 }
 
 .iconList:hover {
@@ -326,18 +334,20 @@ body {
 }
 
 .TodoCountainer {
-    width: 90%;
-    height: 350px;
+    width: 100%;
+    max-width: 450px;
+    height: 400px;
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 10px;
-    border-radius: 8px;
+    border-radius: 16px;
     background-color: #000000b4;
-    padding: 10px;
+    padding: 20px;
     transition: 0.3s ease;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .details-title {
@@ -378,34 +388,38 @@ body {
     padding: 10px;
     display: flex;
     gap: 10px;
+    width: 100%;
 }
 
 .inpTodo>input {
-    padding: 5px;
+    flex: 1;
+    padding: 8px;
     border-radius: 4px;
     outline: none;
     border: none;
     background-color: #d8d8d857;
+    color: white;
 }
 
 .inpTodo>button {
-    padding: 5px 10px;
+    padding: 5px 15px;
     border-radius: 4px;
     outline: none;
     border: none;
     background-color: #ececec57;
     color: white;
+    cursor: pointer;
 }
 
 .listTodo {
     width: 100%;
-    height: 300px;
+    height: auto;
     display: flex;
     align-items: center;
     flex-direction: column;
     border-top: 1px solid rgba(219, 219, 219, 0.445);
     margin-top: 10px;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .listTodo>ul {
@@ -419,11 +433,13 @@ body {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
     color: white;
     border: 1px solid transparent;
     transition: 0.3s ease;
     border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .listTodo>ul>li:hover {
@@ -446,13 +462,16 @@ body {
 }
 
 .infoCity {
-    width: 20%;
-    height: 400px;
+    width: 25%;
+    height: auto;
+    min-height: 400px;
     backdrop-filter: blur(10px);
-    border-radius: 30px;
+    border-radius: 16px;
     -webkit-backdrop-filter: blur(18px);
-    padding: 10px;
+    padding: 20px;
     font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
 }
 
 .infoCityNight {
@@ -465,23 +484,17 @@ body {
     border-radius: 10px;
 }
 
-@media (width<=480px) {
-    .Setup {
-        width: 100%;
-        height: 400px;
-    }
-}
-
 .col-2-section1 {
     width: 100%;
-    margin-top: 50px;
-    padding: 20px 40px;
+    margin-top: 30px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 0 0 24px 24px;
     flex-wrap: wrap;
     gap: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dashboard-logout-btn {
@@ -556,11 +569,75 @@ body {
     }
 }
 
+
+/* ==========================================
+   MEDIA QUERIES (RESPONSIVE)
+   ========================================== */
+
+@media (max-width: 1024px) {
+    .navbar {
+        width: 95%;
+    }
+    .col-1-section1 {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .aboutWeather {
+        width: 48%;
+    }
+    .infoCity {
+        width: 48%;
+    }
+    .TodoCountainer {
+        width: 100%;
+        max-width: none;
+        margin-top: 10px;
+    }
+}
+
 @media (max-width: 768px) {
+    .navbar {
+        padding: 0 15px;
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 10px;
+    }
+    .col-1-section1 {
+        flex-direction: column;
+        align-items: center;
+    }
+    .aboutWeather,
+    .infoCity,
+    .TodoCountainer {
+        width: 100% !important;
+        height: auto;
+        min-height: 300px;
+    }
     .col-2-section1 {
         flex-direction: column-reverse;
         text-align: center;
         padding: 25px 15px;
         border-radius: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .Setup {
+        width: 100%;
+        height: auto;
+        min-height: 400px;
+        padding: 25px 15px;
+    }
+    .Setup>div>h1 {
+        font-size: 26px;
+    }
+    .temp-display {
+        font-size: 56px;
+    }
+    .countainerTime,
+    .countainerDate {
+        font-size: 14px;
+        padding: 6px 12px;
     }
 }
