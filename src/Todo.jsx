@@ -146,6 +146,9 @@ export function Todo({ setIsOpenModal, tasks, setTasks }) {
                 </div>
               </li>
             );
+
+
+            
           })}
         </ul>
       </div>
