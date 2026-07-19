@@ -1,4 +1,8 @@
+import { useEffect, useRef } from 'react';
+
 export function WelcomeForm({ user, setUser }) {
+
+const isValid = !user.name?.trim() || !user.city?.trim();
   function handleUser(e) {
     setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
@@ -7,35 +11,30 @@ export function WelcomeForm({ user, setUser }) {
     localStorage.setItem('userVorodi', JSON.stringify(user));
     location.reload();
   }
-
-  let isValid = !user.name || !user.city || user.name.trim() === '';
-
+  let refs=useRef()
+  useEffect(() => {
+    function EnterHandleClick(e) {
+      if (e.code === 'Enter') {
+        refs.current.click()
+      }
+    }
+    document.addEventListener('keydown', EnterHandleClick);
+    return () => document.removeEventListener('keydown', EnterHandleClick);
+  }, []);
   return (
     <div className="WelcomeForm">
       <>
         <div>
           <label htmlFor="name">What's Your Name?</label>
-          <input type="text" name="name" id="name" onChange={(e) => handleUser(e)} />
+          <input type="text" name="name" id="name" value={user.name} onChange={(e) => handleUser(e)} />
         </div>
         <div>
           <label htmlFor="city">Which country do you like??</label>
-          <select id="city" name="city" value={user.city || ''} onChange={(e) => handleUser(e)}>
-            <option value="" className="op" disabled>
-              Select your city
-            </option>
-            <option value="karaj" className="op">
-              karaj
-            </option>
-            <option value="tehran" className="op">
-              Tehran
-            </option>
-            <option value="kerman" className="op">
-              Kerman
-            </option>
-          </select>
+          <input type="text" name="city" id="city" value={user.city} onChange={(e) => handleUser(e)} />
         </div>
         <div>
           <button
+            ref={refs}
             onClick={handleSaveUser}
             className={isValid ? 'disBtn' : 'truBtn'}
             disabled={isValid}

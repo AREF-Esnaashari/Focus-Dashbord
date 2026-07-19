@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export function Todo() {
+export function Todo({ setIsOpenModal, tasks, setTasks }) {
   let [todoText, setTodoText] = useState('');
-  let [tasks, setTasks] = useState(() => {
-    let storage = JSON.parse(localStorage.getItem('task'));
-    return storage || [];
-  });
+
+  let inputRefFocus = useRef();
 
   function handleAddTask() {
     if (!todoText) return;
@@ -24,7 +22,7 @@ export function Todo() {
 
     setTimeout(() => {
       setTasks((task) => task.filter((item) => item.id !== id));
-    }, 2300);
+    }, 2000);
   }
   useEffect(() => {
     localStorage.setItem('task', JSON.stringify(tasks));
@@ -33,13 +31,29 @@ export function Todo() {
   useEffect(
     function () {
       function handleEnter(e) {
-        if (e.code === 'Enter') handleAddTask();
+        if (e.code === 'Enter') {
+          (handleAddTask(), inputRefFocus.current.focus());
+        }
       }
       document.addEventListener('keydown', handleEnter);
       return () => document.removeEventListener('keydown', handleEnter);
     },
-    [todoText] // 💡 اضافه کردن متن برای آپدیت شدن دائمِ افکت
+    [todoText]
   );
+  useEffect(
+    function () {
+      inputRefFocus.current.focus();
+    },
+    () => document.activeElement(Todo),
+    [Todo]
+  );
+  useEffect(() => {
+    function EscapeHandle(e) {
+      if (e.code === 'Escape') setIsOpenModal((prev) => !prev);
+    }
+    document.addEventListener('keydown', EscapeHandle);
+    return () => document.removeEventListener('keydown', EscapeHandle);
+  }, [Todo]);
   return (
     <div className="TodoCountainer">
       <div>
@@ -51,6 +65,7 @@ export function Todo() {
           name=""
           id=""
           value={todoText}
+          ref={inputRefFocus}
           onChange={(e) => setTodoText(e.target.value)}
         />
         <button onClick={handleAddTask}>Add</button>

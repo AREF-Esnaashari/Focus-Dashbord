@@ -4,8 +4,8 @@ export function TimeItem() {
 
   const currentTime = `${currentHour}:${currentMinute}`;
 
-  const dayOrNight = currentHour >= 6 && currentHour < 18 ? 'day' : 'Night';
-  //   Based on this 👆, we determine whether it is day or night.
+ 
+  
 
   return (
     <div className="countainerTime">

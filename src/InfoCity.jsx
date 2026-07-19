@@ -1,4 +1,6 @@
 export function InfoCity({ user, weather }) {
+  const hour = weather.time ? weather.time.split("T")[0].split(":")[0] : "";
+
   return (
     <div className={weather.is_day === 1 ? 'infoCity' : 'infoCityNight infoCity'}>
       <div className="details-card">
@@ -15,12 +17,20 @@ export function InfoCity({ user, weather }) {
             </div>
             <div className="detail-item">
               <span>Time:</span>
-              <strong>{weather.is_day === 1 ? '☀️ Day' : '🌙 Night'}</strong>
+              <strong>
+                {hour >= 5 && hour < 12
+                  ? '🌝DAY'
+                  : hour >= 12 && hour < 18
+                    ? '☀️ Afternoon'
+                    : hour >= 18 && hour < 21
+                      ? '🌆 Evening'
+                      : '🌙  Night'}
+              </strong>
             </div>
             <div className="detail-item">
-              <span>Update:</span>
+              <span>Clock:</span>
               <strong className="time-text">
-                {weather.time ? weather.time.split('T')[1] : ''}
+                {weather.time ? weather.time.split('T').slice(1) : ''}
               </strong>
             </div>
           </div>

@@ -25,6 +25,27 @@ body {
     animation: rotation 1s linear infinite;
 }
 
+.ErrorFeatch {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    background-color: #31313115;
+    align-items: center;
+    height: 300px;
+    border-radius: 10px;
+    border: 1px solid rgba(102, 102, 102, 0.26);
+    flex-direction: column;
+}
+
+.ErrorFeatch>span {
+    color: rgba(220, 220, 220, 0.459);
+}
+
+.ErrorFeatch>h1 {
+    color: red;
+    font-size: 30px;
+}
+
 @keyframes rotation {
     0% {
         transform: rotate(0deg);
@@ -78,6 +99,28 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     transform: translateY(0px);
     font-weight: bold;
+}
+
+.countainerDayOrNight {
+    padding: 7px 10px;
+    color: white;
+    font-size: 17px;
+    font-weight: 540;
+    border-radius: 12px;
+    background: rgba(250, 250, 250, 0.08);
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateY(0px);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.countainerDayOrNight>span {
+    cursor: pointer;
 }
 
 .countainerTime:hover,
@@ -286,7 +329,6 @@ body {
     position: relative;
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
     gap: 15px;
 }
 
@@ -298,7 +340,8 @@ body {
     padding: 6px;
     cursor: pointer;
     background-color: #0d1117;
-    border-radius: 50%;
+    border-radius: 200px;
+    border-bottom-left-radius: 0;
     user-select: none;
     z-index: 1000;
     top: 3px;
@@ -313,7 +356,21 @@ body {
 }
 
 .night {
-    background: rgba(56, 56, 56, 0.911);
+    background-image: url(../public/image/view-point-loch-katrine-scotland-sunset-landscape-dusk-5k-4849x2727-6399.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+
+.day {
+    background-image: url(../public/image/island_of_a_thousand_waterfalls_by_threedeee-d9ox6px.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
 }
 
 .weather-status {
@@ -479,6 +536,11 @@ body {
 }
 
 .is-day {
+    background-image: url(../public/image/island_of_a_thousand_waterfalls_by_threedeee-d9ox6px.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     background-color: rgba(255, 255, 255, 0.301);
     padding: 10px;
     border-radius: 10px;
@@ -491,9 +553,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 0 0 24px 24px;
     flex-wrap: wrap;
+    border-radius: 10px;
     gap: 20px;
+    background-color: #30303063;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -526,13 +589,13 @@ body {
 
 .dashboard-guideline {
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.596);
     font-weight: 400;
     letter-spacing: 0.3px;
 }
 
 .dashboard-guideline strong {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.596);
     background: rgba(255, 255, 255, 0.08);
     padding: 2px 6px;
     border-radius: 6px;
@@ -543,14 +606,14 @@ body {
 
 .dashboard-signature {
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.596);
     font-weight: 400;
     letter-spacing: 0.5px;
 }
 
 .signature-name {
     font-weight: 700;
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.596);
     position: relative;
     padding-left: 2px;
     background: linear-gradient(120deg, #ffffff, #a3a3a3, #ffffff);
@@ -569,10 +632,14 @@ body {
     }
 }
 
-
-/* ==========================================
-   MEDIA QUERIES (RESPONSIVE)
-   ========================================== */
+.countTask {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    user-select: none;
+    border-radius: 10px;
+    padding: 10px;
+}
 
 @media (max-width: 1024px) {
     .navbar {
