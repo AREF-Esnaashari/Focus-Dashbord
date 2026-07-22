@@ -3,13 +3,13 @@
 Clone the repository:
 
 ```bash
-git clone https://github.com/AREF-Esnaashari/App-Movies.git
+git clone https://github.com/AREF-Esnaashari/Focus-Dashbord
 ```
 
 Move into the project directory:
 
 ```bash
-cd App-Movies
+cd Focus-Dashbord
 ```
 
 Install dependencies:
