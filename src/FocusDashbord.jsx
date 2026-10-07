@@ -62,7 +62,7 @@ export default function FocusDashbord() {
         }
   
 
-        let validCountery = data.results[0].population > 10000;
+        let validCountery = data.results[0].population > 1000;
 
         if (!data.results[0] && validCountery) {
           throw new Error('City not found!');
